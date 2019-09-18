@@ -1,0 +1,39 @@
+{
+  "name": "project",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "test": "cross-env VUE_CLI_BABEL_TARGET_NODE=true VUE_CLI_BABEL_TRANSPILE_MODULES=true jest",
+    "exec": "cross-env VUE_CLI_BABEL_TARGET_NODE=true VUE_CLI_BABEL_TRANSPILE_MODULES=true jest --json",
+    "serve": "cross-env vue-cli-service serve",
+    "build": "cross-env vue-cli-service build",
+    "submit": "codenation-jest-score ./score-map.json"
+  },
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "codenation-jest-score": "^1.0.2",
+    "core-js": "^2.6.9",
+    "jquery": "^3.4.1",
+    "popper.js": "^1.15.0",
+    "vue": "^2.6.10",
+    "vue-router": "^3.0.7",
+    "vuex": "^3.1.1",
+    "vuex-persist": "^2.1.0"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.8.0",
+    "@vue/cli-service": "^3.8.0",
+    "cross-env": "^5.2.0",
+    "jest": "^24.8.0",
+    "jest-puppeteer": "^4.2.0",
+    "node-sass": "^4.9.0",
+    "puppeteer": "^1.17.0",
+    "sass-loader": "^7.1.0",
+    "vue-template-compiler": "^2.6.10"
+  },
+  "description": "Nesta altura do campeonato, já conseguimos observar uma dor recorrente: compartilhar informaçōes com a aplicação inteira. O que fazer quando dois componentes precisam dos mesmos dados? E se um deles é responsável por alterar, como imediatamente mandar esta nova informação pro outro sem que tudo vire uma grande bagunça? Para isto nós usamos um `gerenciador de estado`, sendo ele o Vuex! Faça uma agenda de contatos para ver o quanto é simples manter dados compartilhados com toda a aplicação quando usamos ele!",
+  "main": "babel.config.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
