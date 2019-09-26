@@ -5,6 +5,8 @@ import Router from 'vue-router';
  * Views and Layouts imports.
  */
 import Home from '@/view/Home';
+import Create from '@/view/Create';
+import Edit from '@/view/Edit';
 import Main from '@/layout/Main';
 import NotFound from '@/view/NotFound';
 
@@ -25,6 +27,14 @@ export default new Router({
           path: '404',
           component: NotFound,
         },
+        {
+          path: 'create',
+          component: Create,
+        },
+        {
+          path: '/:contato_id/edit',
+          component: Edit
+        }
       ],
     },
     {

@@ -1,40 +1,21 @@
 <template>
   <card-vue title="Contatos">
-    <contact-vue v-for="(contact, index) in contacts" :key="index" :contact="contact"/>
+    <contact-vue v-for="(contact, index) in contacts" :key="index" :contact="contact" />
   </card-vue>
 </template>
 
 <script>
-import CardVue from '../components/Card.vue'
-import ContactVue from '../components/Contact.vue'
+import CardVue from "../components/Card.vue";
+import ContactVue from "../view/Contact.vue";
+import { mapGetters } from "vuex";
 
 export default {
   components: {
     CardVue,
     ContactVue
   },
-  data() {
-    return {
-      contacts: [{
-      name: "Fábio",
-      email: "fafafa@biobiobio.com"
-    },{
-      name: "Fábio",
-      email: "fafafa@biobiobio.com"
-    },{
-      name: "Fábio",
-      email: "fafafa@biobiobio.com"
-    },{
-      name: "Fábio",
-      email: "fafafa@biobiobio.com"
-    },{
-      name: "Fábio",
-      email: "fafafa@biobiobio.com"
-    },{
-      name: "Fábio",
-      email: "fafafa@biobiobio.com"
-    }]
-    }
+  computed: {
+    ...mapGetters(["contacts"])
   }
-}
+};
 </script>

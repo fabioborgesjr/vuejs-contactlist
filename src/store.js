@@ -10,7 +10,23 @@ const local = new Persistence({
 
 export default new Vuex.Store({
   state: {
-    //
+    contacts: [
+      {
+        id: 1,
+        name: "Fábio",
+        email: "fafafa@biobiobio.com"
+      },
+      {
+        id: 2,
+        name: "Fábio",
+        email: "fafafa@biobiobio.com"
+      },
+      {
+        i:3,
+        name: "Fábio",
+        email: "fafafa@biobiobio.com"
+      }
+    ]
   },
 
   mutations: {
@@ -18,7 +34,9 @@ export default new Vuex.Store({
   },
 
   getters: {
-    //
+    contacts: state => {
+      return state.contacts;
+    }
   },
 
   plugins: [

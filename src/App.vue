@@ -3,6 +3,8 @@
 </template>
 
 <style lang="scss">
+  @import 'bootstrap';
+  
   body {
     color: #332e2e;
     background-color: #dfdfff;

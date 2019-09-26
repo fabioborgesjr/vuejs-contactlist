@@ -1,15 +1,11 @@
 <template>
   <div class="container">
-    <div class="row">
-      <div class="col-sm-4 col-md-4 col-lg-4">
-        <div class="card my-5">
-          <div class="card-body">
-            <h5 class="card-title text-center">
-              {{ title }}
-            </h5>
-            <slot></slot>
-          </div>
-        </div>
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title text-center">{{ title }}</h5>
+      </div>
+      <div class="card-body">
+        <slot></slot>
       </div>
     </div>
   </div>
@@ -32,23 +28,25 @@ export default {
 
 <style>
 .card {
-  width: 50%;
-  margin-left: 25%;
-  margin-top: 10%;
-  text-align: center;
+  top: 10%;
+  width: 500px;
+  max-height: 500px;
   border: 0;
   border-radius: 1rem;
-  box-shadow: 0 .5rem 1rem 0 rgba(0, 0, 0, .1);
+  box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
   background-color: #fff;
 }
 
 .card .card-title {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
   font-weight: 300;
   font-size: 1.5rem;
+  text-align: center;
 }
 
 .card .card-body {
+  overflow-y: auto;
   padding: 2rem;
 }
 </style>
