@@ -1,11 +1,14 @@
 <template>
   <div class="container">
     <div class="card">
-      <div class="card-header">
+      <div class="card-header" :data-test="dataTest">
         <h5 class="card-title text-center">{{ title }}</h5>
       </div>
       <div class="card-body">
         <slot></slot>
+      </div>
+      <div class="card-footer">
+        <slot name="footer"></slot>
       </div>
     </div>
   </div>
@@ -18,10 +21,7 @@ export default {
       type: String,
       default: "Seu título"
     },
-    subtitle: {
-      type: String,
-      default: "Seu subtítulo"
-    }
+    dataTest: String
   }
 };
 </script>
@@ -30,7 +30,8 @@ export default {
 .card {
   top: 10%;
   width: 500px;
-  max-height: 500px;
+  max-height: 550px;
+  height: max-content;
   border: 0;
   border-radius: 1rem;
   box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
@@ -46,7 +47,11 @@ export default {
 }
 
 .card .card-body {
-  overflow-y: auto;
   padding: 2rem;
+  overflow-y: auto;
+}
+
+.card-body {
+  max-height: 400px;
 }
 </style>

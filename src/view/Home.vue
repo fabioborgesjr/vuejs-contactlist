@@ -1,6 +1,13 @@
 <template>
-  <card-vue title="Contatos">
-    <contact-vue v-for="(contact, index) in contacts" :key="index" :contact="contact" />
+  <card-vue :dataTest="`total-${contacts.length}`" :title="`Contatos (${contacts.length})`">
+    <span v-if="contacts.length === 0" data-test="sem-contatos">Você não possui contatos... :(</span>
+    <contact-vue v-else v-for="(contact, index) in contacts" :key="index" :contact="contact" />
+    <router-link
+      class="btn btn-success btn-lg btn-block"
+      to="/create"
+      data-test="novo-contato"
+      slot="footer"
+    >Adicionar contato</router-link>
   </card-vue>
 </template>
 

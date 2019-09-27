@@ -5,8 +5,12 @@
       <p>{{contact.email}}</p>
     </div>
     <div class="btn btn-group-sm">
-      <router-link class="btn btn-success" :to="`/${contact.id}/edit`" >Editar</router-link>
-      <button class="btn btn-danger">Remover</button>
+      <router-link
+        class="btn btn-success"
+        data-test="editar"
+        :to="{path: `/${contact.id}/edit`, params: { id: contact.id }}"
+      >Editar</router-link>
+      <button data-test="apagar" @click="deleteCt(contact.id)" class="btn btn-danger">Remover</button>
     </div>
   </div>
 </template>
@@ -16,7 +20,15 @@ export default {
   props: {
     contact: {
       name: String,
-      email: String
+      email: String,
+      id: Number
+    }
+  },
+  methods: {
+    deleteCt() {
+      this.$store.commit("delete", this.contact.id);
+
+      this.$router.push({ path: "/" });
     }
   }
 };

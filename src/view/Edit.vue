@@ -1,22 +1,61 @@
 <template>
-  <div class="row">
-    <div class="col-sm-6 col-md-6 col-lg-6">
-      <h5 class="name">{{contact.name}}</h5>
-      <p>{{contact.email}}</p>
-    </div>
-    <div class="btn btn-group-sm">
-      <router-link class="btn btn-success" :to="`/${contact.id}/edit`" >Editar</router-link>
-      <button class="btn btn-danger">Remover</button>
-    </div>
-  </div>
+  <card-vue title="Editar contato">
+    <form>
+      <div class="form-group">
+        <label for="name">Nome</label>
+        <input v-model="contact.name" type="text" class="form-control" id="name" data-test="nome" />
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          v-model="contact.email"
+          type="email"
+          class="form-control"
+          id="email"
+          data-test="email"
+        />
+      </div>
+      <div class="form-group">
+        <button
+          type="button"
+          class="btn btn-primary btn-lg btn-block"
+          @click="submit(contact)"
+          data-test="salvar"
+        >Salvar</button>
+      </div>
+    </form>
+    <RouterLink slot="footer" to="/">Voltar</RouterLink>
+  </card-vue>
 </template>
 
 <script>
+import CardVue from "../components/Card.vue";
+import { mapGetters } from "vuex";
+
 export default {
-  props: {
-    contact: {
-      name: String,
-      email: String
+  data() {
+    return {
+      contact: {}
+    };
+  },
+  components: {
+    CardVue
+  },
+  created() {
+    const id = parseInt(this.$route.params.contato_id),
+      contact = this.contactByID(id);
+
+    if (contact) this.contact = contact;
+    else this.$router.push("/404");
+  },
+  computed: {
+    ...mapGetters(["contactByID"])
+  },
+  methods: {
+    submit(contact) {
+      this.$store.commit("edit", contact);
+
+      this.$router.push({ path: "/" });
     }
   }
 };
@@ -26,14 +65,5 @@ export default {
 .row {
   text-align: left;
   justify-content: flex-start;
-}
-
-.btn {
-  margin: 0 5px 0 5px;
-}
-
-.name {
-  font-size: 1.5em;
-  margin-bottom: 5px;
 }
 </style>

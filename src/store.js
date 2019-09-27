@@ -1,45 +1,48 @@
-import Vue from 'vue';
-import Vuex from 'vuex';
-import Persistence from 'vuex-persist';
+import Vue from "vue";
+import Vuex from "vuex";
+import Persistence from "vuex-persist";
 
 Vue.use(Vuex);
 
 const local = new Persistence({
-  storage: window.localStorage,
+  storage: window.localStorage
 });
 
 export default new Vuex.Store({
   state: {
-    contacts: [
-      {
-        id: 1,
-        name: "Fábio",
-        email: "fafafa@biobiobio.com"
-      },
-      {
-        id: 2,
-        name: "Fábio",
-        email: "fafafa@biobiobio.com"
-      },
-      {
-        i:3,
-        name: "Fábio",
-        email: "fafafa@biobiobio.com"
-      }
-    ]
+    contacts: []
   },
 
   mutations: {
-    //
+    edit: (state, form) => {
+      state.contacts = state.contacts.filter(contact => {
+        if (contact.id === form.id) {
+          contact = form;
+        }
+
+        return contact;
+      });
+    },
+    delete: (state, id) => {
+      state.contacts = state.contacts.filter(contact => {
+        return contact.id !== id;
+      });
+    },
+    add(state, form) {
+      const newId = Math.floor(Math.random() * 9999999) + 1;
+
+      state.contacts.push({ ...form, id: newId });
+    }
   },
 
   getters: {
     contacts: state => {
       return state.contacts;
+    },
+    contactByID: state => id => {
+      return state.contacts.find(contact => contact.id === id);
     }
   },
 
-  plugins: [
-    local.plugin,
-  ],
+  plugins: [local.plugin]
 });
